@@ -12,7 +12,8 @@ MAINTAINER prc2k10@googlemail.com <prc2k10@googlemail.com>
 RUN apt-get update && \
     apt-get -y upgrade && \
     apt-get install -y \
-		wget
+		wget \
+		gnupg2
 
 RUN wget -qO- https://apt.hyperion-project.org/hyperion.pub.key | gpg --dearmor -o /usr/share/keyrings/hyperion.pub.gpg
 RUN echo "deb [signed-by=/usr/share/keyrings/hyperion.pub.gpg] https://apt.hyperion-project.org/ $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hyperion.list
