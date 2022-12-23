@@ -13,7 +13,10 @@ RUN apt-get update && \
     apt-get -y upgrade && \
     apt-get install -y \
 		wget \
-		gnupg2
+		gnupg2 \
+		gpg \
+		apt-transport-https \
+		lsb-release
 
 RUN wget -qO- https://apt.hyperion-project.org/hyperion.pub.key | gpg --dearmor -o /usr/share/keyrings/hyperion.pub.gpg
 RUN echo "deb [signed-by=/usr/share/keyrings/hyperion.pub.gpg] https://apt.hyperion-project.org/ $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hyperion.list
